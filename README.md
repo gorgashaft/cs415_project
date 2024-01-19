@@ -1,2 +1,3 @@
 # cs415_project
-Movie Website repo for CS-415 class.
+CS-415 Project:
+Create a website dedicated to movies, using virtual machines as the backend.
