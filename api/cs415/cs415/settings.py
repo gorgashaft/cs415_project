@@ -82,7 +82,7 @@ DATABASES = {
 	'USER': 'apiuser',
 	'PASSWORD': 'apiuserpass',
 	'HOST': '50.16.32.87',
-	'PORT': '3306',
+	'PORT': '3306'
     }
 }
 
