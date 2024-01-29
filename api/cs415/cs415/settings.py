@@ -79,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cs415website',
-	'USER': 'apiuser',
-	'PASSWORD': 'apiuserpass',
-	'HOST': '52.91.52.88',
-	'PORT': '3306'
+	    'USER': 'apiuser',
+	    'PASSWORD': 'apiuserpass',
+	    'HOST': '52.91.52.88',
+	    'PORT': '3306'
     }
 }
 
