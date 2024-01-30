@@ -45,6 +45,9 @@ class StudioTable(models.Model):
         managed = False
         db_table = 'studio_table'
 
+    def __str__(production):
+        return f'{production.production_company}'
+
 
 class UserTable(models.Model):
     user_id = models.AutoField(primary_key=True)
