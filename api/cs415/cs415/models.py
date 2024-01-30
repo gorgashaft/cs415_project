@@ -71,7 +71,6 @@ class UserTable(models.Model):
         managed = False
         db_table = 'user_table'
     
-    def get_full_name_and_email(self):
+    def __str__(self):
         return f'{self.first_name} {self.last_name} - {self.email}'
-    user = UserTable.objects.get(user_id=1)
-print(user.get_full_name_and_email())
+
