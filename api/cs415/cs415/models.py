@@ -40,8 +40,8 @@ class RatingsTable(models.Model):
         managed = False
         db_table = 'ratings_table'
 
-    def __str__(rating):
-        return f'{rating.user} --- {rating.movie} --- {rating.value}'
+    def __str__(self,movie,rating):
+        return f'{self.first_name} --- {movie.title} --- {rating.value}'
 
 
 class StudioTable(models.Model):
@@ -72,5 +72,5 @@ class UserTable(models.Model):
         db_table = 'user_table'
     
     def __str__(self):
-        return f'{self.first_name} {self.last_name} - {self.email}'
+        return f'{self.first_name} {self.last_name}'
 
