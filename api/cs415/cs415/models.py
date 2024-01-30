@@ -26,7 +26,7 @@ class MovieTable(models.Model):
         db_table = 'movie_table'
     
     def __str__(movie):
-        return f'{movie.title} {movie.director} - {movie.release_date}' 
+        return f'{movie.title} -- {movie.director}' 
 
 
 class RatingsTable(models.Model):
