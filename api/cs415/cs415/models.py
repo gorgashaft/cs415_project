@@ -7,6 +7,9 @@ class GenreTable(models.Model):
     class Meta:
         managed = False
         db_table = 'genre_table'
+    
+    def __str__(genreclass):
+        return f'{genreclass.genre}'
 
 
 class MovieTable(models.Model):
@@ -21,6 +24,9 @@ class MovieTable(models.Model):
     class Meta:
         managed = False
         db_table = 'movie_table'
+    
+    def __str__(movie):
+        return f'{movie.title}'
 
 
 class RatingsTable(models.Model):
@@ -34,6 +40,9 @@ class RatingsTable(models.Model):
         managed = False
         db_table = 'ratings_table'
 
+    def __int__(rating):
+        return f'{rating.value}'
+
 
 class StudioTable(models.Model):
     studio_id = models.AutoField(primary_key=True)
@@ -46,7 +55,7 @@ class StudioTable(models.Model):
         db_table = 'studio_table'
 
     def __str__(distribution):
-        return f'{distribution.studio}'
+        return f'{distribution.production_company}'
 
 
 class UserTable(models.Model):
