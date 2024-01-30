@@ -58,3 +58,6 @@ class UserTable(models.Model):
     class Meta:
         managed = False
         db_table = 'user_table'
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
