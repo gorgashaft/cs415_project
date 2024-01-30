@@ -45,8 +45,8 @@ class StudioTable(models.Model):
         managed = False
         db_table = 'studio_table'
 
-    def __str__(production):
-        return f'{production.production_company}'
+    def __str__(distribution):
+        return f'{distribution.studio}'
 
 
 class UserTable(models.Model):
@@ -64,5 +64,3 @@ class UserTable(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
-    def __str__(contact):
-        return f'{contact.email}'
