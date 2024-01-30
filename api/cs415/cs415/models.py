@@ -70,6 +70,6 @@ class UserTable(models.Model):
     class Meta:
         managed = False
         db_table = 'user_table'
-
-    def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+    
+    def get_full_name_and_email(self):
+        return f'{self.first_name} {self.last_name} - {self.email}'
