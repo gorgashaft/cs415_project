@@ -40,7 +40,7 @@ class RatingsTable(models.Model):
         managed = False
         db_table = 'ratings_table'
 
-    def __int__(rating):
+    def __str__(rating):
         return f'{rating.value}'
 
 
