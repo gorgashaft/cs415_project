@@ -41,7 +41,7 @@ class RatingsTable(models.Model):
         db_table = 'ratings_table'
 
     def __str__(rating):
-        return f'{rating.value}'
+        return f'{rating.user} --- {rating.movie} --- {rating.value}'
 
 
 class StudioTable(models.Model):
