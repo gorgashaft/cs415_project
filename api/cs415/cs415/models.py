@@ -26,7 +26,7 @@ class MovieTable(models.Model):
         db_table = 'movie_table'
     
     def __str__(movie):
-        return f'{movie.title} -- {movie.director}' 
+        return f'{movie.title}'
 
 
 class RatingsTable(models.Model):
@@ -40,8 +40,8 @@ class RatingsTable(models.Model):
         managed = False
         db_table = 'ratings_table'
 
-    def __str__(self,movie,rating):
-        return f'{self.first_name} --- {movie.title} --- {rating.value}'
+    def __str__(rating):
+        return f'{rating.user} --- {rating.movie} --- {rating.value}'
 
 
 class StudioTable(models.Model):
