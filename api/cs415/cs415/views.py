@@ -33,16 +33,33 @@ class RatingsTableAPIView(APIView):
         ratings = RatingsTable.objects.all()
         serializer = RatingsTableSerializer(ratings, many=True)
         return Response({'Ratings': serializer.data})
+    
+class GetSingleRatingAPIView(APIView):
+    def get(self, request, id):
+        rating = RatingsTable.objects.get(pk=id)
+        serializer = RatingsTableSerializer(rating)
+        return Response({'Rating': serializer.data})
 
 class StudioTableAPIView(APIView):
     def get(self,request):
-        studio = StudioTable.objects.all()
-        serializer = StudioTableSerializer(studio, many=True)
+        studios = StudioTable.objects.all()
+        serializer = StudioTableSerializer(studios, many=True)
+        return Response({'Studios': serializer.data})
+    
+class GetSingleStudioAPIView(APIView):
+    def get(self, request, id):
+        studio = StudioTable.objects.get(pk=id)
+        serializer = StudioTableSerializer(studio)
         return Response({'Studio': serializer.data})
     
 class GenreTableAPIView(APIView):
     def get(self,request):
-        genre = GenreTable.objects.all()
-        serializer = GenreTableSerializer(genre, many=True)
-        return Response({'Genre': serializer.data})
+        genres = GenreTable.objects.all()
+        serializer = GenreTableSerializer(genres, many=True)
+        return Response({'Genres': serializer.data})
 
+class GetSingleGenreAPIView(APIView):
+    def get(self, request, id):
+        genre = GenreTable.objects.get(pk=id)
+        serializer = GenreTableSerializer(genre)
+        return Response({'Genre': serializer.data})
