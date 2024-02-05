@@ -30,4 +30,5 @@ urlpatterns = [
     path('ratings/rating/<int:id>', views.GetSingleRatingAPIView.as_view()),
     path('studios/studio/<int:id>', views.GetSingleStudioAPIView.as_view()),
     path('genres/genre/<int:id>', views.GetSingleGenreAPIView.as_view()),
+    path('users/useremail/<str:email>', views.GetSingleUserEmailAPIView.as_view()),
 ]
