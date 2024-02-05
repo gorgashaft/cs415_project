@@ -10,20 +10,17 @@ class UserTableAPIView(APIView):
         serializer = UserTableSerializer(users, many=True)
         return Response({'Users': serializer.data})
     
+#class GetSingleUserAPIView(APIView):
+#    def get(self, request, id):
+#        user = UserTable.objects.get(pk=id)
+#        serializer = UserTableSerializer(user)
+#        return Response({'User': serializer.data})
+
 class GetSingleUserAPIView(APIView):
-    def get(self, request, id):
-        user = UserTable.objects.get(pk=id)
+    def get(self, request, email):
+        user = UserTable.objects.get(email=email)
         serializer = UserTableSerializer(user)
         return Response({'User': serializer.data})
-
-class UserByEmailAPIView(APIView):
-    def get(self, request, email):
-        try:
-            user = UserTable.objects.get(email=email)
-            serializer = UserTableSerializer(user)
-            return Response({'User': serializer.data})
-        except User.DoesNotExist:
-            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
 class MovieTableAPIView(APIView):
     def get(self,request):
