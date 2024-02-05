@@ -26,5 +26,4 @@ urlpatterns = [
     path('studio/', views.StudioTableAPIView.as_view()),
     path('genre/', views.GenreTableAPIView.as_view()),
     path('users/user/<int:id>', views.GetSingleUserAPIView.as_view()),
-    path('users/user/email/<int:id>', views.UserByEmailAPIView.as_view()),
 ]
