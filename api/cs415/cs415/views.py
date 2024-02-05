@@ -21,6 +21,12 @@ class MovieTableAPIView(APIView):
         movies = MovieTable.objects.all()
         serializer = MovieTableSerializer(movies, many=True)
         return Response({'Movies': serializer.data})
+    
+class GetSingleMovieAPIView(APIView):
+    def get(self, request, id):
+        movie = MovieTable.objects.get(pk=id)
+        serializer = MovieTableSerializer(movie)
+        return Response({'Movie': serializer.data})
 
 class RatingsTableAPIView(APIView):
     def get(self,request):
