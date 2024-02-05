@@ -11,8 +11,8 @@ class UserTableAPIView(APIView):
         return Response({'Users': serializer.data})
     
 class GetSingleUserAPIView(APIView):
-    def get(self, request, id):
-        user = UserTable.objects.get(pk=id)
+    def get(self, request, email):
+        user = UserTable.objects.filter(email=email)
         serializer = UserTableSerializer(user)
         return Response({'User': serializer.data})
 
