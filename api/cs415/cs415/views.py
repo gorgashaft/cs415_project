@@ -16,15 +16,6 @@ class GetSingleUserAPIView(APIView):
         serializer = UserTableSerializer(user)
         return Response({'User': serializer.data})
 
-class UserByEmailAPIView(APIView):
-    def get(self, request, email):
-        try:
-            user = UserTable.objects.get(email=email)
-            serializer = UserTableSerializer(user)
-            return Response({'User': serializer.data})
-        except User.DoesNotExist:
-            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-
 class MovieTableAPIView(APIView):
     def get(self,request):
         movies = MovieTable.objects.all()
