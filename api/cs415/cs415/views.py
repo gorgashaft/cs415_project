@@ -9,6 +9,12 @@ class UserTableAPIView(APIView):
         users = UserTable.objects.all()
         serializer = UserTableSerializer(users, many=True)
         return Response({'Users': serializer.data})
+    
+class GetSingleUserAPIView(APIView):
+    def get(self, request, id):
+        user = UserTable.objects.get(pk=id)
+        serializer = UserTableSerializer(user)
+        return Response({'User': serializer.data})
 
 class MovieTableAPIView(APIView):
     def get(self,request):
@@ -33,3 +39,4 @@ class GenreTableAPIView(APIView):
         genre = GenreTable.objects.all()
         serializer = GenreTableSerializer(genre, many=True)
         return Response({'Genre': serializer.data})
+
