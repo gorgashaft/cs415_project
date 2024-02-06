@@ -26,9 +26,12 @@ urlpatterns = [
     path('studio/', views.StudioTableAPIView.as_view()),
     path('genre/', views.GenreTableAPIView.as_view()),
     path('users/user/<int:id>', views.GetSingleUserAPIView.as_view()),
+    path('users/email/<str:email>', views.GetSingleUserEmailAPIView.as_view()),
     path('movies/movie/<int:id>', views.GetSingleMovieAPIView.as_view()),
+    path('movies/director/<str:director>', views.GetSingleMovieDirectorAPIView.as_view()),
     path('ratings/rating/<int:id>', views.GetSingleRatingAPIView.as_view()),
+    path('ratings/movierating/<int:movie_id>', views.GetRatingsOnSingleMovieAPIView.as_view()),
     path('studios/studio/<int:id>', views.GetSingleStudioAPIView.as_view()),
+    path('studios/prodcompany/<str:studio>', views.GetProductionStudioAPIView.as_view()),
     path('genres/genre/<int:id>', views.GetSingleGenreAPIView.as_view()),
-    path('users/useremail/<str:email>', views.GetSingleUserEmailAPIView.as_view()),
 ]

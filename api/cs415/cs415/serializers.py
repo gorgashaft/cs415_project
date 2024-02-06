@@ -26,3 +26,8 @@ class StudioTableSerializer(serializers.ModelSerializer):
         model = StudioTable
         fields = '__all__'  # Or list the fields you want to include
 
+class ProductionStudioTableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudioTable
+        fields = 'studio','production_company'  # Or list the fields you want to include
+
