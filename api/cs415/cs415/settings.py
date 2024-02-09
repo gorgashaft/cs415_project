@@ -105,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Turn on/off jwt Auth Header validation
+JWT_AUTH = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
