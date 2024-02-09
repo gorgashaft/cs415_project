@@ -13,6 +13,7 @@ import UserView from "./Components/UserView";
 import Module1 from "./Components/Module1";
 import Module2 from "./Components/Module2";
 import Module3 from "./Components/Module3";
+import axios from 'axios';
 
 // Axios.get("https://catfact.ninja/fact").then((res) => {
 //   console.log(res.data);
