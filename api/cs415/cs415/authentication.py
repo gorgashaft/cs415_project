@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import jwt
-from cs415.models import User
+from cs415.models import UserTable
 from django.conf import settings
 from rest_framework import authentication
 from rest_framework.exceptions import AuthenticationFailed, ParseError
@@ -25,12 +25,12 @@ class JWTAuthentication(authentication.BaseAuthentication):
             print(err)
             raise ParseError()
         # Verify user information exists
-        # user_id = payload.get("user_id")
-        # if user_id is None:
-        #     raise AuthenticationFailed('User identifier not found in JWT')
-        # user = User.objects.filter(user_id=user_id).first()
-        # if user is None:
-        #     raise AuthenticationFailed('User not found')
+        user_id = payload.get("user_id")
+        if user_id is None:
+             raise AuthenticationFailed('User identifier not found in JWT')
+        user = UserTable.objects.filter(user_id=user_id).first()
+        if user is None:
+             raise AuthenticationFailed('User not found')
  
         # Return the token payload
         return payload

@@ -22,12 +22,12 @@ class Login(APIView):
                              'error': 'User with this email does not exist'},
                              status=status.HTTP_404_NOT_FOUND)
  
-        check_pass = UserTable.objects.filter(email = email, pass_word=password).exists()
+        check_pass = UserTable.objects.filter(email=email, password=password).exists()
         if check_pass == False:
             return Response({'success': False,
                              'error': 'Incorrect password for user'},
                              status=status.HTTP_401_UNAUTHORIZED)
-        user = UserTable.objects.get(email = email, pass_word=password)
+        user = UserTable.objects.get(email=email, password=password)
         if user is not None:
             jwt_token = JWTAuthentication.create_jwt(user)
             data = {
