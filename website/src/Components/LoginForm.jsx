@@ -1,68 +1,92 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [error, setError] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
-      setError('');
-
-      const payload = {
+      setError(null)
+      let success = true
+      let errorText = ''
+      const payload = JSON.stringify({
           email: email,
           password: pass
-      };
-
+      })
       try {
-          const response = await fetch('http://localhost:8000/login/', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-          });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-              // If the backend responds with an error status, display the error message
-              setError(data.error || "Login failed. Please check your credentials.");
-          } else {
-              // Assuming your backend returns a property `success` and a JWT `token` upon successful authentication
-              if (data.success) {
-                  // Store the received token in sessionStorage or localStorage
-                  sessionStorage.setItem("auth", true); // Consider using localStorage if you want to persist login state across sessions
-                  sessionStorage.setItem("token", data.token);
-                  sessionStorage.setItem("user_id", data.user_id); // Make sure to handle the user ID securely
-                  navigate('/userprofile'); // Redirect the user to their profile
-              } else {
-                  // If the backend indicates failure without an HTTP error status
-                  setError("Login failed. Please check your credentials.");
+          fetch('http://localhost:8000/login/',{
+          method: 'POST',
+          body: payload,
+          headers:{
+              'Content-Type': 'application/json'
               }
+          }).then(res => {
+                  if (!res.ok){
+                      errorText = "Error: " + res.status + ' - '
+                      success = false
+                      return res.json()
+                  }
+                  else {
+                      success = true
+                      return res.json()
+                  }
+               }
+            ).then(data => {
+              if (!success) {
+                  for (const err in data.errors){
+                  for (const msg in data.errors[err]) errorText += data.errors[err][msg]
+                  }
+                  console.log(errorText)
+                  setError(errorText)
+              }
+              else{
+                if (data.success){
+                  window.sessionStorage.setItem("auth", true)
+                  window.sessionStorage.setItem("user_id", data.user_id)
+                  window.sessionStorage.setItem("token", data.token)
+                  navigate('/userprofile')
+                }
+              }
+
+          })
+          .catch(error => {
+              success = false
+              console.error(error)
+          });
+          if (success) {
+              setEmail('')
+              setPass('')
+              setError('Logged In Successfully!')
+              //Navigate to User Page
+
+          }
+          else{
+              setError(errorText)
           }
       } catch (error) {
-          console.error("An error occurred during login:", error);
-          setError("An unexpected error occurred. Please try again later.");
+          console.error(error);
+          setError('Error Registering - Check your information and try again')
       }
-    };
-
+    }
     return (
-        <div>
-            <h2>Login</h2>
+    <div >
+      <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email@email.com" id="email" name="email"/>
                 <label htmlFor="password">Password</label>
                 <input required value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="*********" id="password" name="password"/>
                 <button type="submit">Login</button>
-                {error && <p className="text-error"><b>{error}</b></p>}
+                <p className="text-success"><b>{error}</b></p>
             </form>
             <button className="link-btn" onClick={() => navigate('/register')}>Don't have an account? Register here.</button>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default LoginForm;
+
+
