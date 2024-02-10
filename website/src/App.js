@@ -6,13 +6,16 @@ import { BrowserRouter as Router,
 import './App.css';
 import { useRoutes } from "react-router-dom";
 import { RegisterForm } from "./Components/RegisterForm";
+import { AddMovie } from "./Components/AddMovie";
+import { AddRating } from "./Components/AddRating";
 import LoginForm from "./Components/LoginForm";
 import LandingPage from "./Components/LandingPage";
 import UserProfile from "./Components/UserProfile";
 import UserView from "./Components/UserView";
 import MovieList from "./Components/MovieList";
 import Studios from "./Components/Studios";
-import Module3 from "./Components/Module3";
+import Ratings from "./Components/Ratings";
+import GenreList from "./Components/GenreList"
 import axios from 'axios';
 
 // Axios.get("https://catfact.ninja/fact").then((res) => {
@@ -48,7 +51,8 @@ function App() {
             <Link to="/users" style={{ padding: 5 }}>Users</Link>
             <Link to="/movielist" style={{ padding: 5 }}>Movie Database</Link>
             <Link to="/studios" style={{ padding: 5 }}>Studios</Link>
-            <Link to="/modules/3" style={{ padding: 5 }}>Module 3</Link>
+            <Link to="/ratings" style={{ padding: 5 }}>Ratings</Link>
+            <Link to="/genrelist" style={{ padding: 5 }}>Genres</Link>
           </nav>
           <div className="App">
           <Routes>
@@ -58,8 +62,11 @@ function App() {
             <Route path="/userprofile" element={<UserProfile />} />
             <Route path="/users" element={<UserView />} />
             <Route path="/movielist" element={<MovieList />} />
+            <Route path="/genrelist" element={<GenreList />} />
+            <Route path="/newmovieentry" element={<AddMovie />} />
+            <Route path="/newratingentry" element={<AddRating />} />
             <Route path="/studios" element={<Studios />} />
-            <Route path="/modules/3" element={<Module3 />} />
+            <Route path="/ratings" element={<Ratings />} />
             <Route path="/unauthorized" element={<UnAuthorized />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
