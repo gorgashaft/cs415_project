@@ -10,11 +10,11 @@ const UserView = () => {
 
     useEffect(() => {
         if (!window.sessionStorage.getItem("auth")) navigate('/unauthorized')
-        fetch('http://localhost:8000/users')
+        fetch('http://localhost:8000/users/')
         .then(res => res.json())
         .then(data => {
-            setColumns(Object.keys(data.users[0]))
-            setRecords(data.users)
+            setColumns(Object.keys(data.Users[0]))
+            setRecords(data.Users)
         })
         .catch(error => console.error(error));
     }, []);
@@ -37,9 +37,10 @@ const UserView = () => {
                             <td>{record.user_id}</td>
                             <td>{record.first_name}</td>
                             <td>{record.last_name}</td>
+                            <td className="hidetext">{record.password}</td>
+                            <td>{record.username}</td>
                             <td>{record.email}</td>
-                            <td className="hidetext">{record.pass_word}</td>
-                            <td>{record.created_date}</td>
+                            <td>{record.date_created}</td>
                             <td>{record.is_active}</td>
                             <td>{record.last_login}</td>
                         </tr>

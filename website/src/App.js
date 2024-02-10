@@ -10,8 +10,8 @@ import LoginForm from "./Components/LoginForm";
 import LandingPage from "./Components/LandingPage";
 import UserProfile from "./Components/UserProfile";
 import UserView from "./Components/UserView";
-import Module1 from "./Components/Module1";
-import Module2 from "./Components/Module2";
+import MovieList from "./Components/MovieList";
+import Studios from "./Components/Studios";
 import Module3 from "./Components/Module3";
 import axios from 'axios';
 
@@ -46,8 +46,8 @@ function App() {
             <Link to="/login" style={{ padding: 5 }}>Login</Link>
             <Link to="/userprofile" style={{ padding: 5 }}>User Profile</Link>
             <Link to="/users" style={{ padding: 5 }}>Users</Link>
-            <Link to="/modules/1" style={{ padding: 5 }}>Module 1</Link>
-            <Link to="/modules/2" style={{ padding: 5 }}>Module 2</Link>
+            <Link to="/movielist" style={{ padding: 5 }}>Movie Database</Link>
+            <Link to="/studios" style={{ padding: 5 }}>Studios</Link>
             <Link to="/modules/3" style={{ padding: 5 }}>Module 3</Link>
           </nav>
           <div className="App">
@@ -57,8 +57,8 @@ function App() {
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/userprofile" element={<UserProfile />} />
             <Route path="/users" element={<UserView />} />
-            <Route path="/modules/1" element={<Module1 />} />
-            <Route path="/modules/2" element={<Module2 />} />
+            <Route path="/movielist" element={<MovieList />} />
+            <Route path="/studios" element={<Studios />} />
             <Route path="/modules/3" element={<Module3 />} />
             <Route path="/unauthorized" element={<UnAuthorized />} />
             <Route path="*" element={<NoMatch />} />

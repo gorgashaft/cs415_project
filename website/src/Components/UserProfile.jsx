@@ -20,9 +20,9 @@ const UserProfile = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            setUserColumns(Object.keys(data.user))
-            setRecord(data.user)
-            setInfoColumns(Object.keys(data.info[0]))
+            setUserColumns(Object.keys(data.User))
+            setRecord(data.User)
+            // setInfoColumns(Object.keys(data.info[0]))
             setInfo(data.info)
             setAddressColumns(Object.keys(data.addresses[0]))
             setAddresses(data.addresses)
@@ -57,9 +57,10 @@ const UserProfile = () => {
                         <td>{record.user_id}</td>
                         <td>{record.first_name}</td>
                         <td>{record.last_name}</td>
+                        <td class="hidetext">{record.password}</td>
+                        <td>{record.username}</td>
                         <td>{record.email}</td>
-                        <td class="hidetext">{record.pass_word}</td>
-                        <td>{record.created_date}</td>
+                        <td>{record.date_created}</td>
                         <td>{record.is_active}</td>
                         <td>{record.last_login}</td>
                     </tr>
@@ -67,7 +68,7 @@ const UserProfile = () => {
             </tbody>
         </table>
 
-        <h2>User Info</h2>
+        {/* <h2>User Info</h2>
         <table className='table'>
             <thead>
                 <tr>
@@ -143,7 +144,7 @@ const UserProfile = () => {
                     ))
                 }
             </tbody>
-        </table>
+        </table> */}
         <button onClick={handleLogout}>Logout</button>
     </div>
   )

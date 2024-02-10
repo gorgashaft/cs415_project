@@ -31,7 +31,7 @@ const LoginForm = (props) => {
                     window.sessionStorage.setItem("auth", true)
                     window.sessionStorage.setItem("user_id", data.user_id)
                     window.sessionStorage.setItem("token", data.token)
-                    navigate('/users/user')
+                    navigate('/userprofile')
                 }
                 else {
                     setError(data.error);
