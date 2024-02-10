@@ -6,8 +6,8 @@ const LandingPage = () => {
 
   return (
     <div>
-      <h1>CS415 Landing Page</h1>
-      <p><font color="white">This is the publicly accessible page for all users to see</font></p>
+      <h1>FilmZion Database</h1>
+      <p><font color="white">Welcome to the FilmZion Database for Cinefiles</font></p>
     </div>
   )
 }
