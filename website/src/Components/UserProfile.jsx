@@ -82,7 +82,7 @@ export default UserProfile
 //       })
 //       .catch((error) => console.error(error));
 
-//     fetch('http://localhost:8000/ratings/')
+//     fetch('http://localhost:8000/ratings/' + user_id)
 //       .then((res) => res.json())
 //       .then((data) => {
 //         console.log(data);
