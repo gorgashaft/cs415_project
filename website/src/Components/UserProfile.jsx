@@ -5,12 +5,6 @@ const UserProfile = () => {
     const navigate = useNavigate();
     const [userColumns, setUserColumns] = useState([]);
     const [record, setRecord] = useState([]);
-    const [addressColumns, setAddressColumns] = useState([]);
-    const [addresses, setAddresses] = useState([]);
-    const [phoneColumns, setPhoneColumns] = useState([]);
-    const [phones, setPhones] = useState([]);
-    const [infoColumns, setInfoColumns] = useState([]);
-    const [info, setInfo] = useState([]);
     const user_id = window.sessionStorage.getItem("user_id")
 
 
@@ -22,12 +16,6 @@ const UserProfile = () => {
             console.log(data)
             setUserColumns(Object.keys(data.User))
             setRecord(data.User)
-            // setInfoColumns(Object.keys(data.info[0]))
-            setInfo(data.info)
-            setAddressColumns(Object.keys(data.addresses[0]))
-            setAddresses(data.addresses)
-            setPhoneColumns(Object.keys(data.phones[0]))
-            setPhones(data.phones)
         })
         .catch(error => console.error(error));
     }, []);
