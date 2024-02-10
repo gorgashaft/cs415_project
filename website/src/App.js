@@ -8,6 +8,7 @@ import { useRoutes } from "react-router-dom";
 import { RegisterForm } from "./Components/RegisterForm";
 import { AddMovie } from "./Components/AddMovie";
 import { AddRating } from "./Components/AddRating";
+import { AddGenre } from "./Components/AddGenre";
 import LoginForm from "./Components/LoginForm";
 import LandingPage from "./Components/LandingPage";
 import UserProfile from "./Components/UserProfile";
@@ -65,6 +66,7 @@ function App() {
             <Route path="/genrelist" element={<GenreList />} />
             <Route path="/newmovieentry" element={<AddMovie />} />
             <Route path="/newratingentry" element={<AddRating />} />
+            <Route path="/newgenreentry" element={<AddGenre />} />
             <Route path="/studios" element={<Studios />} />
             <Route path="/ratings" element={<Ratings />} />
             <Route path="/unauthorized" element={<UnAuthorized />} />
