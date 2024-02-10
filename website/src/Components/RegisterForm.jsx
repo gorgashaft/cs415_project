@@ -15,12 +15,16 @@ export const RegisterForm = (props) => {
         setError(null)
         let success = true
         let errorText = ''
+
+        // Get current date in YYYY-MM-DD format
+        const currentDate = new Date().toISOString().split('T')[0];
         const payload = JSON.stringify({
             first_name: firstName,
             last_name: lastName,
             username: username,
             email: email,
-            password: pass
+            password: pass,
+            date_created: currentDate // Add the date_created field
         })
         try {
             fetch('http://localhost:8000/users/',{
