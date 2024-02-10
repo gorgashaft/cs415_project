@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom"
 
 export const AddMovie = (props) => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [director, setDirector] = useState('');
     const [release_date, setRelease] = useState('');

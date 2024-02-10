@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom"
 
 export const AddGenre = (props) => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [genre, setGenre] = useState('');
     const [error, setError] = useState('');
 

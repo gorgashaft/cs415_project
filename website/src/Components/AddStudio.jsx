@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom"
 
 export const AddStudio = (props) => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [studio, setStudio] = useState('');
     const [production_company, setProdComp] = useState('');
     const [error, setError] = useState('');
