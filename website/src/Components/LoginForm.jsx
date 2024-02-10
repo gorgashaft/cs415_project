@@ -51,7 +51,7 @@ const LoginForm = (props) => {
                 <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email@email.com" id="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input required value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="*********" id="password" name="password" />
-                <button type="submit">Login</button>
+                <button type="submit">Submit</button>
                 <p className="text-success"><b>{error}</b></p>
             </form>
             <button className="link-btn" onClick={() => navigate('/register')}>Don't have an account? Register here.</button>

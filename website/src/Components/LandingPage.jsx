@@ -8,8 +8,10 @@ const LandingPage = () => {
     <div>
       <h1>FilmZion Database</h1>
       <p><font color="white">Welcome to the FilmZion Database for Cinefiles</font></p>
+      <button type="button" onClick={() => navigate('/login')}>Login</button>
     </div>
+    
   )
 }
 
-export default LandingPage
+export default LandingPage;
