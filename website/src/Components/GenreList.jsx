@@ -41,7 +41,7 @@ const GenreList = () => {
                 }
             </tbody>
         </table>
-        <button className="link-btn" onClick={() => navigate('/newgenreentry')}>+Add New Genre Entry.</button>
+        <button className="link-btn" onClick={() => navigate('/newgenreentry')}>+Add Genre</button>
     </div>
 
   )

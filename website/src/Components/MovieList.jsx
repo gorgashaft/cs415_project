@@ -46,7 +46,7 @@ const MovieList = () => {
                 }
             </tbody>
         </table>
-        <button className="link-btn" onClick={() => navigate('/newmovieentry')}>+Add New Movie Entry.</button>
+        <button className="link-btn" onClick={() => navigate('/newmovieentry')}>+Add Movie</button>
     </div>
 
   )

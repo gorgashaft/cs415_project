@@ -44,7 +44,7 @@ const Studios = () => {
                 }
             </tbody>
         </table>
-        <button className="link-btn" onClick={() => navigate('/newstudioentry')}>+Add New Studio Entry.</button>
+        <button className="link-btn" onClick={() => navigate('/newstudioentry')}>+Add Studio</button>
     </div>
 
   )

@@ -44,7 +44,7 @@ const Ratings = () => {
                 }
             </tbody>
         </table>
-        <button className="link-btn" onClick={() => navigate('/newratingentry')}>+Add New Rating Entry.</button>
+        <button className="link-btn" onClick={() => navigate('/newratingentry')}>+Add Rating Entry</button>
     </div>
 
   )

@@ -9,6 +9,7 @@ import { RegisterForm } from "./Components/RegisterForm";
 import { AddMovie } from "./Components/AddMovie";
 import { AddRating } from "./Components/AddRating";
 import { AddGenre } from "./Components/AddGenre";
+import { AddStudio } from "./Components/AddStudio";
 import LoginForm from "./Components/LoginForm";
 import LandingPage from "./Components/LandingPage";
 import UserProfile from "./Components/UserProfile";
@@ -67,6 +68,7 @@ function App() {
             <Route path="/newmovieentry" element={<AddMovie />} />
             <Route path="/newratingentry" element={<AddRating />} />
             <Route path="/newgenreentry" element={<AddGenre />} />
+            <Route path="/newstudioentry" element={<AddStudio />} />
             <Route path="/studios" element={<Studios />} />
             <Route path="/ratings" element={<Ratings />} />
             <Route path="/unauthorized" element={<UnAuthorized />} />
