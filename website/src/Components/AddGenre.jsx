@@ -67,7 +67,7 @@ export const AddGenre = (props) => {
         <h2>Add Genre</h2>
         <form className="register-form" onSubmit={handleSubmit}>
             <label htmlFor="genre">Genre</label>
-            <input required value={genre} onChange={(e) => setGenre(e.target.value)} type="text" placeholder="Genre" id="genre" name="genre"/>
+            <input required value={genre} onChange={(e) => setGenre(e.target.value)} type="text" placeholder="i.e. Action, Comedy" id="genre" name="genre"/>
             
             <button type="submit">Submit</button>
             <p className="text-success"><b>{error}</b></p>
