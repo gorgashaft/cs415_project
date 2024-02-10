@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"
 
 export const AddGenre = (props) => {
     const navigate = useNavigate();
-    const [genre, setGenre] = useState('');
+    const [value, setValue] = useState('');
+    const [comments, setComments] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
@@ -13,7 +14,8 @@ export const AddGenre = (props) => {
         let errorText = ''
 
         const payload = JSON.stringify({
-            genre: genre,
+            value: value,
+            comments: comments,
         })
         try {
             fetch('http://localhost:8000/genre/',{
@@ -49,31 +51,36 @@ export const AddGenre = (props) => {
                 console.error(error)
             });
             if (success) {
-                setGenre('')
-                setError('Genre Entry Added!')
+                setValue('')
+                setComments('')
+                setError('Rating Added!')
             }
             else{
                 setError(errorText)
             }
         } catch (error) {
             console.error(error);
-            setError('Error Adding Genre - Check Yo Data and Try Again')
+            setError('Error Adding Rating - Check Yo Info!')
         }
 
     }
 
     return (
         <div >
-            <h2>Add Genre Entry</h2>
+            <h2>Register</h2>
             <form className="register-form" onSubmit={handleSubmit}>
-                <label htmlFor="genre">Genre</label>
-                <input required value={genre} onChange={(e) => setGenre(e.target.value)} type="text" placeholder="Genre" id="genre" name="genre"/>
+                <label htmlFor="value">User Rating</label>
+                <input required value={value} onChange={(e) => setValue(e.target.value)} type="int" placeholder="1-Horrid, 10-Incredible" id="value" name="value"/>
+                
+                <label htmlFor="comments">User Comments</label>
+                <input required value={comments} onChange={(e) => setComments(e.target.value)} type="text" placeholder="Comments" id="comments" name="comments"/>
                 
                 <button type="submit">Submit</button>
+                
                 <p className="text-success"><b>{error}</b></p>
             </form>
         </div>
     )
 }
 
-export default AddGenre
+export default AddGenre;
