@@ -1,34 +1,50 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom"
 
-const Studios = () => {
-  const navigate = useNavigate();
-  const [pageName, setPageName] = useState('')
-  const [pageTitle, setPageTitle] = useState('')
-  const [pageDescription, setPageDescription] = useState('')
 
-  useEffect(() => {
-    if (!window.sessionStorage.getItem("auth")) navigate('/unauthorized')
-    fetch('http://localhost:8000/studio/')
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        setPageName(data.page.page_name)
-        setPageTitle(data.page.page_title)
-        setPageDescription(data.page.page_description)
-    })
-    .catch(error => console.error(error));
-}, []);
+const Studios = () => {
+    const navigate = useNavigate();
+    const [columns, setColumns] = useState([]);
+    const [records, setRecords] = useState([]);
+
+
+    useEffect(() => {
+        if (!window.sessionStorage.getItem("auth")) navigate('/unauthorized')
+        fetch('http://localhost:8000/studio/')
+        .then(res => res.json())
+        .then(data => {
+            setColumns(Object.keys(data.Studios[0]))
+            setRecords(data.Studios)
+        })
+        .catch(error => console.error(error));
+    }, []);
 
   return (
     <div>
-
-      <h1>Studios</h1>
-      <p><font color="white">This is only accessible when logged in</font></p>
-
-        <h2>{pageName}</h2>
-        <p><b>{pageTitle}</b></p>
-        <p><font color='white'>{pageDescription}</font></p>
+        <h2>Movie Studios</h2>
+        <table className='table'>
+            <thead>
+                <tr>
+                    {columns.map((c, i) => (
+                        <th key={i}>{c.replaceAll("_", " ").toUpperCase()}</th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    records.map((record,i) => (
+                        <tr key={i}>
+                            <td>{record.studio_id}</td>
+                            <td>{record.studio}</td>
+                            <td>{record.production_company}</td>
+                            <td>{record.filming_location}</td>
+                            <td>{record.rating}</td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+        <button className="link-btn" onClick={() => navigate('/newstudioentry')}>+Add New Studio Entry.</button>
     </div>
 
   )

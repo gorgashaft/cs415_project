@@ -48,8 +48,9 @@ const UserView = () => {
                 }
             </tbody>
         </table>
-
+        <button className="link-btn" onClick={() => navigate('/register')}>Don't have an account? Register here.</button>
     </div>
+    
   )
 }
 
