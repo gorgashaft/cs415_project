@@ -6,7 +6,6 @@ export const AddMovie = (props) => {
     const [title, setTitle] = useState('');
     const [director, setDirector] = useState('');
     const [release_date, setRelease] = useState('');
-    const [rating, setRating] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
@@ -19,7 +18,6 @@ export const AddMovie = (props) => {
             title: title,
             director: director,
             release_date: release_date,
-            rating: rating,
         })
         try {
             fetch('http://localhost:8000/movies/',{
@@ -58,7 +56,6 @@ export const AddMovie = (props) => {
                 setTitle('')
                 setDirector('')
                 setRelease('')
-                setRating('')
                 setError('Registered Successfully!')
             }
             else{
@@ -83,9 +80,6 @@ export const AddMovie = (props) => {
 
                 <label htmlFor="release_date">Release Date</label>
                 <input required value={release_date} onChange={(e) => setRelease(e.target.value)} type="date" placeholder="Release Date" id="release_date" name="release_date"/>
-
-                <label htmlFor="rating">Rating</label>
-                <input required value={rating} onChange={(e) => setRating(e.target.value)} type="int" placeholder="1-Terrible, 5-Awesome" id="rating" name="rating"/>
                  
                 <button type="submit">Submit</button>
                 

@@ -7,13 +7,14 @@ const Ratings = () => {
     const [columns, setColumns] = useState([]);
     const [records, setRecords] = useState([]);
 
-
     useEffect(() => {
         if (!window.sessionStorage.getItem("auth")) navigate('/unauthorized')
         fetch('http://localhost:8000/ratings/')
         .then(res => res.json())
         .then(data => {
-            setColumns(Object.keys(data.Ratings[0]))
+            const columns = Object.keys(data.Ratings[0]);
+            columns.splice(2, 0, 'user');
+            setColumns(columns.filter((key) => !['first_name', 'last_name'].includes(key)));
             setRecords(data.Ratings)
         })
         .catch(error => console.error(error));
@@ -35,9 +36,9 @@ const Ratings = () => {
                     records.map((record,i) => (
                         <tr key={i}>
                             <td>{record.rating_id}</td>
+                            <td>{record.first_name + ' ' + record.last_name}</td>
                             <td>{record.value}</td>
-                            <td>{record.movie_id}</td>
-                            <td>{record.user_id}</td>
+                            <td>{record.title}</td>
                             <td>{record.comments}</td>
                         </tr>
                     ))

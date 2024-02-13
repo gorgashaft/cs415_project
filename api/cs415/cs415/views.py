@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from cs415.models import UserTable, MovieTable, RatingsTable, StudioTable, GenreTable
-from cs415.serializers import UserTableSerializer, MovieTableSerializer, RatingsTableSerializer, StudioTableSerializer, GenreTableSerializer, ProductionStudioTableSerializer
+from cs415.models import MovieGenreStudioView, RatingsView, UserTable, MovieTable, RatingsTable, StudioTable, GenreTable
+from cs415.serializers import MovieViewSerializer, RatingsViewSerializer, UserTableSerializer, MovieTableSerializer, RatingsTableSerializer, StudioTableSerializer, GenreTableSerializer, ProductionStudioTableSerializer
 from cs415.settings import JWT_AUTH
 from cs415.authentication import JWTAuthentication
 
@@ -78,8 +78,8 @@ class GetSingleUserEmailAPIView(APIView):
 class MovieTableAPIView(APIView):
     def get(self,request):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)
-        movies = MovieTable.objects.all()
-        serializer = MovieTableSerializer(movies, many=True)
+        movies = MovieGenreStudioView.objects.all()
+        serializer = MovieViewSerializer(movies, many=True)
         return Response({'Movies': serializer.data})
     def post(self, request, *args, **kwargs):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)
@@ -108,8 +108,8 @@ class GetSingleMovieDirectorAPIView(APIView):
 class RatingsTableAPIView(APIView):
     def get(self,request):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)
-        ratings = RatingsTable.objects.all()
-        serializer = RatingsTableSerializer(ratings, many=True)
+        ratings = RatingsView.objects.all()
+        serializer = RatingsViewSerializer(ratings, many=True)
         return Response({'Ratings': serializer.data})
     def post(self, request, *args, **kwargs):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)

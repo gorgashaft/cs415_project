@@ -36,11 +36,11 @@ const MovieList = () => {
                         <tr key={i}>
                             <td>{record.movie_id}</td>
                             <td>{record.title}</td>
+                            <td>{record.studio}</td>
+                            <td>{record.genre}</td>
                             <td>{record.director}</td>
                             <td>{record.release_date}</td>
-                            <td>{record.rating}</td>
-                            <td>{record.studio_id}</td>
-                            <td>{record.genre_id}</td>
+                            
                         </tr>
                     ))
                 }

@@ -19,7 +19,6 @@ class MovieTable(models.Model):
     genre = models.ForeignKey(GenreTable, models.DO_NOTHING, blank=True, null=True)
     director = models.CharField(max_length=255, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
-    rating = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -27,7 +26,21 @@ class MovieTable(models.Model):
     
     def __str__(movie):
         return f'{movie.title}'
+    
+class MovieGenreStudioView(models.Model):
+    movie_id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    studio = models.CharField(max_length=255, blank=True, null=True)
+    genre = models.CharField(max_length=255, blank=True, null=True)
+    director = models.CharField(max_length=255, blank=True, null=True)
+    release_date = models.DateField(blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'movie_table_view'
+    
+    def __str__(movie):
+        return f'{movie.title}'
 
 class RatingsTable(models.Model):
     rating_id = models.AutoField(primary_key=True)
@@ -42,6 +55,22 @@ class RatingsTable(models.Model):
 
     def __str__(rating):
         return f'{rating.user} --- {rating.movie} --- {rating.value}'
+    
+
+class RatingsView(models.Model):
+    rating_id = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=255, blank=True, null=True)
+    last_name = models.CharField(max_length=255, blank=True, null=True)
+    value = models.IntegerField(blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    comments = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'ratings_view'
+
+    def __str__(rating):
+        return f'{rating.first_name} --- {rating.last_name} --- {rating.title} --- {rating.value}'
 
 
 class StudioTable(models.Model):
