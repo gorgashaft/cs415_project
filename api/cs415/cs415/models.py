@@ -10,12 +10,27 @@ class GenreTable(models.Model):
     
     def __str__(genreclass):
         return f'{genreclass.genre}'
+    
+
+
+class StudioTable(models.Model):
+    studio_id = models.AutoField(primary_key=True)
+    studio = models.CharField(max_length=255, blank=True, null=True)
+    production_company = models.CharField(max_length=255, blank=True, null=True)
+    filming_location = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'studio_table'
+
+    def __str__(distribution):
+        return f'{distribution.production_company}'
 
 
 class MovieTable(models.Model):
     movie_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, blank=True, null=True)
-    studio = models.ForeignKey('StudioTable', models.DO_NOTHING, blank=True, null=True)
+    studio = models.ForeignKey(StudioTable, models.DO_NOTHING, blank=True, null=True)
     genre = models.ForeignKey(GenreTable, models.DO_NOTHING, blank=True, null=True)
     director = models.CharField(max_length=255, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
@@ -73,18 +88,6 @@ class RatingsView(models.Model):
         return f'{rating.first_name} --- {rating.last_name} --- {rating.title} --- {rating.value}'
 
 
-class StudioTable(models.Model):
-    studio_id = models.AutoField(primary_key=True)
-    studio = models.CharField(max_length=255, blank=True, null=True)
-    production_company = models.CharField(max_length=255, blank=True, null=True)
-    filming_location = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'studio_table'
-
-    def __str__(distribution):
-        return f'{distribution.production_company}'
 
 
 class UserTable(models.Model):

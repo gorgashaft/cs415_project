@@ -70,8 +70,6 @@ class GetSingleUserEmailAPIView(APIView):
     def get(self, request, email):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)
         user = UserTable.objects.filter(email=email)
-        #for u in user:
-        #    print('test', u.username, u.email)
         serializer = UserTableSerializer(user, many=True)
         return Response({'Users': serializer.data})
 
