@@ -4,7 +4,6 @@ import React, {useState} from "react";
 export const AddStudio = (props) => {
     //const navigate = useNavigate();
     const [studio, setStudio] = useState('');
-    const [production_company, setProdComp] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
@@ -15,7 +14,6 @@ export const AddStudio = (props) => {
 
         const payload = JSON.stringify({
             studio: studio,
-            production_company: production_company,
         })
         try {
             fetch('http://localhost:8000/studio/',{
@@ -52,7 +50,6 @@ export const AddStudio = (props) => {
             });
             if (success) {
                 setStudio('')
-                setProdComp('')
                 setError('Studio Entered!')
             }
             else{
@@ -70,10 +67,7 @@ export const AddStudio = (props) => {
             <h2>New Studio Entry</h2>
             <form className="register-form" onSubmit={handleSubmit}>
                 <label htmlFor="studio">Distributor</label>
-                <input required value={studio} onChange={(e) => setStudio(e.target.value)} type="text" placeholder="Distributor" id="studio" name="studio"/>
-                
-                <label htmlFor="production_company">Production Company</label>
-                <input required value={production_company} onChange={(e) => setProdComp(e.target.value)} type="text" placeholder="Production Company" id="production_company" name="production_company"/>
+                <input required value={studio} onChange={(e) => setStudio(e.target.value)} type="text" placeholder="Studio" id="studio" name="studio"/>
                  
                 <button type="submit">Submit</button>
                 
