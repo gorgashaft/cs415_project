@@ -81,9 +81,19 @@ class MovieTableAPIView(APIView):
         return Response({'Movies': serializer.data})
     def post(self, request, *args, **kwargs):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)
-        serializer = MovieTableSerializer(data=request.data)
+        print(type(request.data), request.data)
+        temp = {
+            **request.data,
+            'studio_id': int(request.data['studioId']),
+            'genre_id': int(request.data['genreId']),
+        }
+        print(temp)
+        serializer = MovieTableSerializer(data=temp)
         if serializer.is_valid():
-            serializer.save()
+            movie_instance = serializer.save()
+            movie_instance.studio_id = request.data['studioId']
+            movie_instance.genre_id = request.data['genreId']
+            movie_instance.save()
             return Response({'Data': serializer.data})
         else:
             return Response({'Errors': serializer.errors},

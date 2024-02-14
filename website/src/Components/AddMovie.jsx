@@ -131,8 +131,8 @@ export const AddMovie = (props) => {
             title,
             director,
             release_date,
-            studio_id: +studioId, // Include studio_id in payload
-            genre_id: +genreId, // Include genre_id in payload
+            studioId,
+            genreId
         });
 
         fetch('http://localhost:8000/movies/', {
