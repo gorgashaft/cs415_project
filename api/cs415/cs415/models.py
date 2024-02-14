@@ -16,8 +16,6 @@ class GenreTable(models.Model):
 class StudioTable(models.Model):
     studio_id = models.AutoField(primary_key=True)
     studio = models.CharField(max_length=255, blank=True, null=True)
-    production_company = models.CharField(max_length=255, blank=True, null=True)
-    filming_location = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False

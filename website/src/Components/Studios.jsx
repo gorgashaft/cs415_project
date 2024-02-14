@@ -36,9 +36,6 @@ const Studios = () => {
                         <tr key={i}>
                             <td>{record.studio_id}</td>
                             <td>{record.studio}</td>
-                            <td>{record.production_company}</td>
-                            <td>{record.filming_location}</td>
-                            <td>{record.rating}</td>
                         </tr>
                     ))
                 }
