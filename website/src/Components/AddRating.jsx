@@ -11,7 +11,8 @@ export const AddRating = (props) => {
     const [users, setUser] = useState([]);
     const [error, setError] = useState('');
 
-    console.log(users);
+    // console.log(users);
+    console.log(userId);
 
     // Fetch Movie Title
     useEffect(() => {
@@ -21,13 +22,13 @@ export const AddRating = (props) => {
             .catch(error => console.error("Failed to load ", error));
     }, []);
 
-        // Fetch User (First Name)
-        useEffect(() => {
-            fetch('http://localhost:8000/users/')
-                .then(response => response.json())
-                .then(data => setUser(data.Users))
-                .catch(error => console.error("Failed to load first name", error));
-        }, []);    
+    // Fetch User (First Name)
+    useEffect(() => {
+        fetch('http://localhost:8000/users/')
+            .then(response => response.json())
+            .then(data => setUser(data.Users))
+            .catch(error => console.error("Failed to load first name", error));
+    }, []);    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -94,9 +95,9 @@ export const AddRating = (props) => {
                 </select>
 
                 {/* User First Name Drop-down */}
-                <label htmlFor="users">User</label>
-                <select required value={userId} onChange={e => setUser(e.target.value)} id="users" name="users">
-                    <option value="">Select Genre</option>
+                <label htmlFor="first_name">User</label>
+                <select required value={userId} onChange={e => setUserId(e.target.value)} id="first_name" name="first_name">
+                    <option value="">Select User</option>
                     {users.map(first_name => (
                         <option key={first_name.user_id} value={first_name.user_id}>{first_name.first_name}</option>
                     ))}

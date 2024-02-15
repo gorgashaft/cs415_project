@@ -123,7 +123,11 @@ class RatingsTableAPIView(APIView):
         if JWT_AUTH: JWTAuthentication.authenticate(self,request=request)
         serializer = RatingsTableSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            ratings_instance = serializer.save()
+            ratings_instance.movie_id = request.data['movieId']
+            ratings_instance.user_id = request.data['userId']
+            ratings_instance.save()
+            ratings_instance.save()
             return Response({'Data': serializer.data})
         else:
             return Response({'Errors': serializer.errors},
