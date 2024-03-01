@@ -22,15 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-weh7pueqqfw3+zpa#_+wio!l2(ga0@7vx3f0c_8mz!h%ui9-ch'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run  with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 # when migrating to cloud add actual URL of front-end website here.
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
-]
+CORS_ALLOWED_ORIGINS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
