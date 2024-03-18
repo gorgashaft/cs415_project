@@ -7,3 +7,10 @@ services:
     restart: always
     ports: 
       - 8080:80
+  cs415-website:
+    build: https://github.com/gorgashaft/cs415_website.git#container:build
+    image: image_cs415_website
+    container_name: dc_cs415_website
+    restart: always
+    ports:
+      - 80:80
