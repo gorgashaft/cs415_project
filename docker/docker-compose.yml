@@ -3,7 +3,7 @@ services:
   cs415-api:
     build: https://github.com/gorgashaft/cs415_project.git#container:api/cs415
     image: image_cs415_api
-    container name: dc_cs415_api
+    container_name: dc_cs415_api
     restart: always
     ports: 
       - 8080:80
