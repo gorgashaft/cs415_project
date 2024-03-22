@@ -474,6 +474,32 @@ LOCK TABLES `user_table` WRITE;\
 INSERT INTO `user_table` VALUES (1,'Sergio','Li','p@ssw0rd','gorgashaft','sel430@ensign.edu','2024-01-29'),(2,'Justin','Schow','uk3lele','jschow33','jschow@ensign.edu','2023-12-29'),(3,'Genesis','Zelayandia','fl0w3r!','latinasrule','gzelayan@ensign.edu','2022-04-22'),(4,'James','Newman','letitbeknown@123','putty2','sirkrisnikov@gmail.com','2021-03-12'),(5,'Alex','Snow','alexsnow','shinsboy','alexsnow@gmail.com','2021-05-03'),(8,'Emma','Lowther','12345','elowther','cookies@byu.edu','2024-02-10'),(9,'Kent','Ellsworth','wehDyn-wypjy0-tihpev','kellsworth','kellsworth@gmail.com','2024-03-01'),(11,'cs415Midterm','Assignment','p@ssw0rd','cs415Midterm','cs415@email.com','2024-03-01');\
 /*!40000 ALTER TABLE `user_table` ENABLE KEYS */;\
 UNLOCK TABLES;\
+
+CREATE
+USER 'apiuser'@'localhost'
+ IDENTIFIED BY
+'apiuserpass';
+
+CREATE
+USER 'apiuser'@'%'
+ IDENTIFIED BY
+'apiuserpass';
+
+GRANT ALL PRIVILEGES
+ON *.*
+to apiuser@localhost
+WITH
+GRANT
+OPTION;
+
+GRANT ALL PRIVILEGES
+ON *.*
+to apiuser@'%'
+WITH
+GRANT
+OPTION;
+
+FLUSH PRIVILEGES;
 \
 --\
 -- Final view structure for view `movie_table_view`\
